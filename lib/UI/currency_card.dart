@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../UI/price_change_text.dart';
+
 class CurrencyCard extends StatelessWidget {
 
   final Map currency;
@@ -12,17 +14,11 @@ class CurrencyCard extends StatelessWidget {
   
       final bool horizontal = MediaQuery.of(context).orientation == Orientation.landscape;
       
-      // TODO: implement build
       return Container(
-        width: MediaQuery.of(context).size.width * .6,
+        width: MediaQuery.of(context).size.width * .7,
         padding: EdgeInsets.all(5.0),
-        // margin: new EdgeInsets.fromLTRB(horizontal ? 49.0 : 16.0, horizontal ? 15.0 : 45.0, 15.0, 16.0),
-        // constraints: new BoxConstraints.expand(),
-        margin: EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
+        margin: EdgeInsets.symmetric(vertical: 5.0),
         decoration: BoxDecoration(
-          // color: Colors.grey,
-          // borderRadius: BorderRadius.circular(10.0),
-          // shape: BoxShape.circle
         ),
         child: Card(
           shape: StadiumBorder(),
@@ -39,9 +35,27 @@ class CurrencyCard extends StatelessWidget {
                   color: Colors.grey
                 ),
               ),
-              Text('Meep'),
-              Text('Meep'),
-              Text('Meep'),
+              Container(
+                margin: new EdgeInsets.symmetric(vertical: 8.0),
+                height: 2.0,
+                width: 18.0,
+                color: Color(0xFFff6a00)
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  PriceChangeText( 
+                    time: '1 hr:', price: double.parse(currency["percent_change_1h"])
+                  )   ,
+                  Padding(padding: EdgeInsets.symmetric(horizontal: 5.0),),
+                  PriceChangeText( 
+                    time: '24 hr:', price: double.parse(currency["percent_change_24h"])
+                  ),
+                ],
+              ),
+              PriceChangeText( 
+                time: '7d:', price: double.parse(currency["percent_change_7d"])
+              ),
               Text('Meep'),
               
             ],

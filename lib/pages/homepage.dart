@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../UI/gradient_background.dart';
 import '../UI/currency_card.dart';
+import '../UI/currency_image.dart';
 
 import '../utils/currencyData.dart';
 
@@ -61,7 +62,15 @@ class _HomeState extends State<HomePage> {
                  ListView.builder(
                   itemCount: _currencies.length,
                   itemBuilder: ( BuildContext context, int index ) {
-                    return CurrencyCard(_currencies[index], index);
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        CurrencyImage(
+                          _currencies[index]['id'], _currencies[index]['symbol']
+                        ),
+                        CurrencyCard(_currencies[index], index)
+                      ],
+                    );
                   },
                 )
       ),
