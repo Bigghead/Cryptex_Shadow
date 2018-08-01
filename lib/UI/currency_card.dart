@@ -47,11 +47,21 @@ class CurrencyCard extends StatelessWidget {
                 width: 18.0,
                 color: Color(0xFFff6a00)
               ),
-              PriceChangeText( 
-                time: '1 hr:', price: double.parse(currency["percent_change_1h"])
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  PriceChangeText( 
+                    time: '1 hr:', price: double.parse(currency["percent_change_1h"])
+                  )   ,
+                  Padding(padding: EdgeInsets.symmetric(horizontal: 5.0),),
+                  PriceChangeText( 
+                    time: '24 hr:', price: double.parse(currency["percent_change_24h"])
+                  ),
+                ],
               ),
-              Text('Meep'),
-              Text('Meep'),
+              PriceChangeText( 
+                time: '7d:', price: double.parse(currency["percent_change_7d"])
+              ),
               Text('Meep'),
               
             ],
