@@ -1,3 +1,8 @@
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+
 import 'package:flutter/material.dart';
 import '../UI/gradient_background.dart';
 
@@ -13,7 +18,22 @@ class HomePage extends StatefulWidget {
 
 class _HomeState extends State<HomePage> {
 
-  final List<Map> currencies = [];
+  List<dynamic> currencies = [];
+
+    @override
+    void initState() {
+      super.initState();
+      _fetchData();
+    }
+
+
+  Future<Null> _fetchData() async {
+    final response        = await http.get('https://api.coinmarketcap.com/v1/ticker/?limit=20');
+    final List<dynamic> coinData = await json.decode(response.body);
+    print(coinData);
+    setState( () => currencies = coinData );
+  }
+
 
   Widget _buildCurrencyList( BuildContext context ) {
 
@@ -32,6 +52,7 @@ class _HomeState extends State<HomePage> {
     );
   }
 
+
   @override
     Widget build(BuildContext context) {
       // TODO: implement build
@@ -44,4 +65,5 @@ class _HomeState extends State<HomePage> {
         ),
       );
     }
+    
 }
