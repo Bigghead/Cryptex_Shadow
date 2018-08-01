@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../UI/price_change_text.dart';
+
 class CurrencyCard extends StatelessWidget {
 
   final Map currency;
@@ -39,7 +41,15 @@ class CurrencyCard extends StatelessWidget {
                   color: Colors.grey
                 ),
               ),
-              Text('Meep'),
+              Container(
+                margin: new EdgeInsets.symmetric(vertical: 8.0),
+                height: 2.0,
+                width: 18.0,
+                color: Color(0xFFff6a00)
+              ),
+              PriceChangeText( 
+                time: '1 hr:', price: double.parse(currency["percent_change_1h"])
+              ),
               Text('Meep'),
               Text('Meep'),
               Text('Meep'),
