@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-
-
 import 'package:flutter/material.dart';
+
 import '../UI/gradient_background.dart';
+import '../UI/currency_card.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -18,7 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomeState extends State<HomePage> {
 
-  List<dynamic> currencies = [];
+  List<dynamic> _currencies = [];
 
     @override
     void initState() {
@@ -30,8 +31,9 @@ class _HomeState extends State<HomePage> {
   Future<Null> _fetchData() async {
     final response        = await http.get('https://api.coinmarketcap.com/v1/ticker/?limit=20');
     final List<dynamic> coinData = await json.decode(response.body);
-    print(coinData);
-    setState( () => currencies = coinData );
+    // print(coinData);
+    setState( () => _currencies = coinData );
+    print(_currencies);
   }
 
 
@@ -48,7 +50,16 @@ class _HomeState extends State<HomePage> {
               tileMode: TileMode.clamp
           ),
         ),
+        child: _currencies.length == 0 
+                ? Center(child: Text('Fetching Data'),)
+                : ListView.builder(
+                  itemCount: _currencies.length,
+                  itemBuilder: ( BuildContext context, int index ) {
+                    return CurrencyCard();
+                  },
+                )
       ),
+      
     );
   }
 
@@ -65,5 +76,5 @@ class _HomeState extends State<HomePage> {
         ),
       );
     }
-    
+
 }
