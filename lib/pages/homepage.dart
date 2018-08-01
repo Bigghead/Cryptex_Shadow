@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import '../UI/gradient_background.dart';
 import '../UI/currency_card.dart';
 
+import '../utils/currencyData.dart';
+
 
 class HomePage extends StatefulWidget {
 
@@ -24,7 +26,9 @@ class _HomeState extends State<HomePage> {
     @override
     void initState() {
       super.initState();
-      _fetchData();
+      // _fetchData();
+      var currencyData = CurrencyData();
+      _currencies = currencyData.currencies;
     }
 
 
@@ -50,12 +54,14 @@ class _HomeState extends State<HomePage> {
               tileMode: TileMode.clamp
           ),
         ),
-        child: _currencies.length == 0 
-                ? Center(child: Text('Fetching Data'),)
-                : ListView.builder(
+        child: 
+        // _currencies.length == 0 
+        //         ? Center(child: Text('Fetching Data'),)
+        //         :
+                 ListView.builder(
                   itemCount: _currencies.length,
                   itemBuilder: ( BuildContext context, int index ) {
-                    return CurrencyCard();
+                    return CurrencyCard(_currencies[index], index);
                   },
                 )
       ),
