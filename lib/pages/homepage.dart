@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import '../UI/gradient_background.dart';
 import '../UI/currency_card.dart';
 import '../UI/currency_image.dart';
+import '../UI/spinning_boi.dart';
 
-import '../utils/currencyData.dart';
+// import '../utils/currencyData.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -27,9 +28,9 @@ class _HomeState extends State<HomePage> {
     @override
     void initState() {
       super.initState();
-      // _fetchData();
-      var currencyData = CurrencyData();
-      _currencies = currencyData.currencies;
+      _fetchData();
+      // var currencyData = CurrencyData();
+      // _currencies = currencyData.currencies;
     }
 
 
@@ -55,24 +56,22 @@ class _HomeState extends State<HomePage> {
               tileMode: TileMode.clamp
           ),
         ),
-        child: 
-        // _currencies.length == 0 
-        //         ? Center(child: Text('Fetching Data'),)
-        //         :
-                 ListView.builder(
-                  itemCount: _currencies.length,
-                  itemBuilder: ( BuildContext context, int index ) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        CurrencyImage(
-                          _currencies[index]['id'], _currencies[index]['symbol']
-                        ),
-                        CurrencyCard(_currencies[index], index)
-                      ],
-                    );
-                  },
-                )
+        child: _currencies.length == 0 
+            ? SpinningBoi(width: 160.0, height: 100.0,)
+            : ListView.builder(
+                itemCount: _currencies.length,
+                itemBuilder: ( BuildContext context, int index ) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CurrencyImage(
+                        _currencies[index]['id'], _currencies[index]['symbol']
+                      ),
+                      CurrencyCard(_currencies[index], index)
+                    ],
+                  );
+                },
+              )
       ),
       
     );

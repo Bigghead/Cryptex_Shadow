@@ -16,7 +16,7 @@ class CurrencyCard extends StatelessWidget {
       
       return Container(
         width: MediaQuery.of(context).size.width * .7,
-        padding: EdgeInsets.all(5.0),
+        // padding: EdgeInsets.symmetric(vertical: 10.0),
         margin: EdgeInsets.symmetric(vertical: 5.0),
         decoration: BoxDecoration(
         ),
@@ -24,6 +24,7 @@ class CurrencyCard extends StatelessWidget {
           shape: StadiumBorder(),
           child: Column(
             children: <Widget>[
+              SizedBox(height: 10.0),
               Text('${ ( index + 1 ).toString() }. ${currency["name"]} ( ${currency["symbol"]} )',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -56,7 +57,7 @@ class CurrencyCard extends StatelessWidget {
               PriceChangeText( 
                 time: '7d:', price: double.parse(currency["percent_change_7d"])
               ),
-              Text('Meep'),
+              SizedBox(height: 10.0,),
               
             ],
           ),
