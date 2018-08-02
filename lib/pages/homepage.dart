@@ -61,14 +61,20 @@ class _HomeState extends State<HomePage> {
             : ListView.builder(
                 itemCount: _currencies.length,
                 itemBuilder: ( BuildContext context, int index ) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CurrencyImage(
-                        _currencies[index]['id'], _currencies[index]['symbol']
-                      ),
-                      CurrencyCard(_currencies[index], index)
-                    ],
+                  return GestureDetector(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/info/' + _currencies[index]["symbol"]
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        CurrencyImage(
+                          _currencies[index]['id'], _currencies[index]['symbol']
+                        ),
+                        CurrencyCard(_currencies[index], index)
+                      ],
+                    ),
                   );
                 },
               )
