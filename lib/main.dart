@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import './pages/homepage.dart';
-import './pages/currency_info.dart';
+import './pages/Home_Page/homepage.dart';
+import './pages/Currency_Info/currency_info.dart';
 
 void main() {
   debugPaintSizeEnabled = true;

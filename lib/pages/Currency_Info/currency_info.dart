@@ -2,11 +2,13 @@ import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 
-import '../UI/gradient_nav.dart';
-import '../UI/gradient_body.dart';
-import '../UI/currency_card.dart';
-import '../UI/currency_image.dart';
-import '../UI/info_text.dart';
+import './currency_converter.dart';
+
+import '../../UI/gradient_nav.dart';
+import '../../UI/gradient_body.dart';
+import '../../UI/currency_card.dart';
+import '../../UI/currency_image.dart';
+import '../../UI/info_text.dart';
 
 class CurrencyInfo extends StatelessWidget {
 
@@ -27,10 +29,13 @@ class CurrencyInfo extends StatelessWidget {
             GradientBody(
               child: Container(
                 constraints: BoxConstraints.expand(),
-                  child: Column(
+                  child: ListView(
                     children: <Widget>[
                       CurrencyImage(currency['id'], currency['symbol']),
-                      CurrencyCard(currency, index),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 25.0),
+                        child: CurrencyCard(currency, index),
+                      ),
                       SizedBox(height: 5.0,),
                       InfoText(title: 'Market Cap', fontSize: 24.0,),
                       Container(
@@ -41,7 +46,8 @@ class CurrencyInfo extends StatelessWidget {
                       ),
                       InfoText(
                         title: '\$${formatCurrency.format(double.parse(currency["market_cap_usd"]))}',
-                      )
+                      ),
+                      Converter('BTC')
                     ],
                   ),
               ),
