@@ -22,18 +22,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': ( BuildContext context ) => HomePage(),
       },
-
-      onGenerateRoute: ( RouteSettings settings ) {
-        
-        final routeUrl = settings.name.split('/');
-        print(routeUrl);
-        if( routeUrl[1] == 'info' ) {
-          return MaterialPageRoute(
-            builder: ( BuildContext context ) => CurrencyInfo(symbol: routeUrl[2],)
-          );
-        }
-        return null;
-      },
     );
   }
 }

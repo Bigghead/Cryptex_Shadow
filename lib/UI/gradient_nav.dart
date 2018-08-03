@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 
-class GradientBackground extends StatelessWidget {
+class GradientNav extends StatelessWidget {
 
   final String title;
   final double barHeight;
 
-  GradientBackground( { this.title = '', this.barHeight = 50.0 } );
+  GradientNav( { this.title = '', this.barHeight = 50.0 } );
 
   @override
   Widget build(BuildContext context) {

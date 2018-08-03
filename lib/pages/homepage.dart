@@ -4,13 +4,14 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
+import './currency_info.dart';
 import '../UI/gradient_nav.dart';
 import '../UI/gradient_body.dart';
 import '../UI/currency_card.dart';
 import '../UI/currency_image.dart';
 import '../UI/spinning_boi.dart';
 
-// import '../utils/currencyData.dart';
+import '../utils/currencyData.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -29,9 +30,9 @@ class _HomeState extends State<HomePage> {
     @override
     void initState() {
       super.initState();
-      _fetchData();
-      // var currencyData = CurrencyData();
-      // _currencies = currencyData.currencies;
+      // _fetchData();
+      var currencyData = CurrencyData();
+      _currencies = currencyData.currencies;
     }
 
 
@@ -54,9 +55,11 @@ class _HomeState extends State<HomePage> {
                 itemCount: _currencies.length,
                 itemBuilder: ( BuildContext context, int index ) {
                   return GestureDetector(
-                    onTap: () => Navigator.pushNamed(
+                    onTap: () => Navigator.push(
                       context,
-                      '/info/' + _currencies[index]["symbol"]
+                      MaterialPageRoute(
+                         builder: ( BuildContext context ) => CurrencyInfo( currency: _currencies[index], index: index )
+                      )
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +83,7 @@ class _HomeState extends State<HomePage> {
       return Scaffold(
         body: Column(
           children: <Widget>[
-            GradientBackground( title: 'Cryptex' ),
+            GradientNav( title: 'Cryptex' ),
             _buildCurrencyList(context)
           ],
         ),
