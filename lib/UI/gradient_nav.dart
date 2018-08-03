@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './info_text.dart';
 
 
 class GradientNav extends StatelessWidget {
@@ -19,10 +20,7 @@ class GradientNav extends StatelessWidget {
       padding: EdgeInsets.only(top: statusbarHeight),
       height: statusbarHeight + barHeight,
       child: Center(
-        child: Text(
-          title,
-          style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        child: InfoText(title: title, fontSize:40.0, fontWeight: FontWeight.bold, ),
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
