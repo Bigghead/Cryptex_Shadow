@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../UI/gradient_nav.dart';
+
 class CurrencyInfo extends StatelessWidget {
 
   final String symbol;
@@ -9,6 +11,17 @@ class CurrencyInfo extends StatelessWidget {
   @override
     Widget build(BuildContext context) {
       // TODO: implement build
-      return Text(symbol);
+      return Scaffold(
+        body: Column(
+          children: <Widget>[
+            GradientBackground(),
+            Expanded(
+              child: Center(
+                child: Text(symbol),
+              ),
+            )
+          ],
+        ),
+      );
     }
 }

@@ -4,7 +4,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-import '../UI/gradient_background.dart';
+import '../UI/gradient_nav.dart';
+import '../UI/gradient_body.dart';
 import '../UI/currency_card.dart';
 import '../UI/currency_image.dart';
 import '../UI/spinning_boi.dart';
@@ -35,7 +36,8 @@ class _HomeState extends State<HomePage> {
 
 
   Future<Null> _fetchData() async {
-    final response        = await http.get('https://api.coinmarketcap.com/v1/ticker/?limit=20');
+    final response        = await http.get('https://api.coinmarketcap.com/v1/ticker/?limit=20', 
+                                  headers: { 'accept' : 'application/json' } );
     final List<dynamic> coinData = await json.decode(response.body);
     // print(coinData);
     setState( () => _currencies = coinData );
@@ -45,17 +47,7 @@ class _HomeState extends State<HomePage> {
 
   Widget _buildCurrencyList( BuildContext context ) {
 
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.red, Colors.blue],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(0.5, 0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp
-          ),
-        ),
+    return GradientBody(
         child: _currencies.length == 0 
             ? SpinningBoi(width: 160.0, height: 100.0,)
             : ListView.builder(
@@ -78,9 +70,7 @@ class _HomeState extends State<HomePage> {
                   );
                 },
               )
-      ),
-      
-    );
+      );
   }
 
 
