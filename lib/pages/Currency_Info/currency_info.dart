@@ -31,23 +31,28 @@ class CurrencyInfo extends StatelessWidget {
                 constraints: BoxConstraints.expand(),
                   child: ListView(
                     children: <Widget>[
+                      SizedBox(height: 10.0,),
                       CurrencyImage(currency['id'], currency['symbol']),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 25.0),
                         child: CurrencyCard(currency, index),
                       ),
-                      SizedBox(height: 5.0,),
-                      InfoText(title: 'Market Cap', fontSize: 24.0,),
+                      SizedBox(height: 10.0,),
+
+                      Center( child:InfoText(
+                        title: 'Market Cap', fontSize: 24.0,)
+                      ),
                       Container(
                         margin: new EdgeInsets.symmetric(vertical: 8.0),
                         height: 2.0,
                         width: MediaQuery.of(context).size.width * .90,
                         color: Colors.grey
                       ),
-                      InfoText(
+                      Center( child: InfoText(
                         title: '\$${formatCurrency.format(double.parse(currency["market_cap_usd"]))}',
-                      ),
-                      Converter('BTC')
+                      ) ),
+                      SizedBox(height: 20.0,),
+                      Converter(currency)
                     ],
                   ),
               ),
