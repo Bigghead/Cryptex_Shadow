@@ -4,12 +4,14 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-import '../UI/gradient_background.dart';
-import '../UI/currency_card.dart';
-import '../UI/currency_image.dart';
-import '../UI/spinning_boi.dart';
+import '../Currency_Info/currency_info.dart';
+import '../../UI/gradient_nav.dart';
+import '../../UI/gradient_body.dart';
+import '../../UI/currency_card.dart';
+import '../../UI/currency_image.dart';
+import './spinning_boi.dart';
 
-// import '../utils/currencyData.dart';
+import '../../utils/currencyData.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -28,14 +30,15 @@ class _HomeState extends State<HomePage> {
     @override
     void initState() {
       super.initState();
-      _fetchData();
-      // var currencyData = CurrencyData();
-      // _currencies = currencyData.currencies;
+      // _fetchData();
+      var currencyData = CurrencyData();
+      _currencies = currencyData.currencies;
     }
 
 
   Future<Null> _fetchData() async {
-    final response        = await http.get('https://api.coinmarketcap.com/v1/ticker/?limit=20');
+    final response        = await http.get('https://api.coinmarketcap.com/v1/ticker/?limit=20', 
+                                  headers: { 'accept' : 'application/json' } );
     final List<dynamic> coinData = await json.decode(response.body);
     // print(coinData);
     setState( () => _currencies = coinData );
@@ -45,26 +48,18 @@ class _HomeState extends State<HomePage> {
 
   Widget _buildCurrencyList( BuildContext context ) {
 
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.red, Colors.blue],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(0.5, 0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp
-          ),
-        ),
+    return GradientBody(
         child: _currencies.length == 0 
             ? SpinningBoi(width: 160.0, height: 100.0,)
             : ListView.builder(
                 itemCount: _currencies.length,
                 itemBuilder: ( BuildContext context, int index ) {
                   return GestureDetector(
-                    onTap: () => Navigator.pushNamed(
+                    onTap: () => Navigator.push(
                       context,
-                      '/info/' + _currencies[index]["symbol"]
+                      MaterialPageRoute(
+                         builder: ( BuildContext context ) => CurrencyInfo( currency: _currencies[index], index: index )
+                      )
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -78,9 +73,7 @@ class _HomeState extends State<HomePage> {
                   );
                 },
               )
-      ),
-      
-    );
+      );
   }
 
 
@@ -90,7 +83,7 @@ class _HomeState extends State<HomePage> {
       return Scaffold(
         body: Column(
           children: <Widget>[
-            GradientBackground( title: 'Cryptex' ),
+            GradientNav( title: 'Cryptex' ),
             _buildCurrencyList(context)
           ],
         ),

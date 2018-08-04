@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import './info_text.dart';
 
 
-class GradientBackground extends StatelessWidget {
+class GradientNav extends StatelessWidget {
 
   final String title;
   final double barHeight;
 
-  GradientBackground( { this.title = '', this.barHeight = 50.0 } );
+  GradientNav( { this.title = '', this.barHeight = 50.0 } );
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,7 @@ class GradientBackground extends StatelessWidget {
       padding: EdgeInsets.only(top: statusbarHeight),
       height: statusbarHeight + barHeight,
       child: Center(
-        child: Text(
-          title,
-          style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        child: InfoText(title: title, fontSize:40.0, fontWeight: FontWeight.bold, ),
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
