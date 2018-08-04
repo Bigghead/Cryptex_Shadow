@@ -35,6 +35,13 @@ class _ConverterState extends State<Converter> {
     });
   }
 
+  void _clearForm () {
+    setState(() {
+      _coinValue.text   = '';
+      _dollarValue.text = '';
+    });
+  }
+
   @override
     Widget build(BuildContext context) {
       // TODO: implement build
@@ -57,8 +64,8 @@ class _ConverterState extends State<Converter> {
                   filled: true,
                   fillColor: Colors.white,
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
-                    onPressed: (){},
+                    icon: Icon(Icons.clear, color: Colors.red),
+                    onPressed: (){ _clearForm(); },
                   )
                 ),
                 onChanged: ( String value ) {
@@ -76,8 +83,8 @@ class _ConverterState extends State<Converter> {
                   filled: true,
                   fillColor: Colors.white,
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.clear,),
-                    onPressed: (){},
+                    icon: Icon(Icons.clear, color: Colors.red),
+                    onPressed: (){ _clearForm(); },
                   )
                 ),
                 onChanged: ( String value ) {
