@@ -58,7 +58,7 @@ class _CurrencyInfoState extends State<CurrencyInfo> {
                   constraints: BoxConstraints.expand(),
                     child: ListView(
                       children: <Widget>[
-                        SizedBox(height: 10.0,),
+                        // SizedBox(height: 5.0,),
                         CurrencyImage(_currency['id'], _currency['symbol']),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 25.0),
@@ -66,8 +66,11 @@ class _CurrencyInfoState extends State<CurrencyInfo> {
                         ),
                         SizedBox(height: 10.0,),
 
-                        Center( child:InfoText(
-                          title: 'Market Cap', fontSize: 24.0,)
+                        Center( child: Text('Market Cap', style: TextStyle(
+                          fontSize: 24.0,
+                          fontFamily: 'FiraCode',
+                          color: Colors.white
+                        ),) 
                         ),
                         Container(
                           margin: new EdgeInsets.symmetric(vertical: 8.0),
@@ -75,13 +78,19 @@ class _CurrencyInfoState extends State<CurrencyInfo> {
                           width: MediaQuery.of(context).size.width * .90,
                           color: Colors.grey
                         ),
-                        Center( child: InfoText(
-                          title: '\$${_formatCurrency.format(double.parse(_currency["market_cap_usd"]))}',
+                        Center( child: Text('\$${_formatCurrency.format(double.parse(_currency["market_cap_usd"]))}',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontFamily: 'FiraCode',
+                            color: Colors.white
+                          ),
                         ) ),
                         SizedBox(height: 20.0,),
                         Converter(_currency),
-                        SizedBox(height: 20.0,),
-                        PriceChart(dataLength: '24h')
+                        PriceChart(dataLength: '24h'),
+                        PriceChart(dataLength: '7d'),
+                        PriceChart(dataLength: '30d')
+                        
                       ],
                     ),
                 ),
