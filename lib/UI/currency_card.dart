@@ -21,6 +21,7 @@ class CurrencyCard extends StatelessWidget {
         decoration: BoxDecoration(
         ),
         child: Card(
+          color: Color(int.parse('#F0F8FF'.substring(1, 7), radix: 16) + 0xFF000000),          
           shape: StadiumBorder(),
           child: Column(
             children: <Widget>[
@@ -28,6 +29,7 @@ class CurrencyCard extends StatelessWidget {
               Text('${ ( index + 1 ).toString() }. ${currency["name"]} ( ${currency["symbol"]} )',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'FiraCode',
                   fontSize: 16.0
                 ),
               ),

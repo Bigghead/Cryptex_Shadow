@@ -12,9 +12,11 @@ class PriceChart extends StatelessWidget {
     Widget build(BuildContext context) {
       // TODO: implement build
       return Container(
+        margin: EdgeInsets.only(top: 25.0),
         child: Column(
           children: <Widget>[
-            Center(child: InfoText(title:dataLength.toUpperCase())),
+            InfoText(title:dataLength.toUpperCase()),
+            SizedBox(height: 15.0,),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 25.0),
               child: Image(
