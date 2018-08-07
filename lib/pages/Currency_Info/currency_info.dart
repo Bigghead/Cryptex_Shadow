@@ -1,11 +1,9 @@
-import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:http/http.dart' as http;
 
 import './currency_converter.dart';
+import './price_chart.dart';
 
 import '../../UI/gradient_nav.dart';
 import '../../UI/gradient_body.dart';
@@ -33,7 +31,7 @@ class _CurrencyInfoState extends State<CurrencyInfo> {
 
   Map _currency;
   int _index;
-  Map _priceData;
+  // Map _priceData;
   var _formatCurrency = NumberFormat("#,##0.00", "en_US");
 
   @override
@@ -41,24 +39,10 @@ class _CurrencyInfoState extends State<CurrencyInfo> {
     _currency       = widget.currency;
     _index          = widget.index;
     _formatCurrency = widget.formatCurrency;
-    _getPriceData();
+    // _getPriceData();
     super.initState();
   }
 
-  
-  Future<Null> _getPriceData() async {
-    
-    try {
-      
-      final http.Response response = await http.get('https://min-api.cryptocompare.com/data/histoday?fsym=${_currency["symbol"]}&tsym=USD&limit=6',
-                                                    headers: { 'accept' : 'application/json' } );
-      final Map data               = await json.decode(response.body);
-      print(data);
-
-    } catch( e ) {
-      print(e);
-    }
-  }
 
   @override
     Widget build(BuildContext context) {
@@ -95,7 +79,9 @@ class _CurrencyInfoState extends State<CurrencyInfo> {
                           title: '\$${_formatCurrency.format(double.parse(_currency["market_cap_usd"]))}',
                         ) ),
                         SizedBox(height: 20.0,),
-                        Converter(_currency)
+                        Converter(_currency),
+                        SizedBox(height: 20.0,),
+                        PriceChart(dataLength: '24h')
                       ],
                     ),
                 ),
