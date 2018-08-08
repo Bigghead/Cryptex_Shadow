@@ -9,6 +9,7 @@ import '../../UI/gradient_nav.dart';
 import '../../UI/gradient_body.dart';
 import '../../UI/currency_card.dart';
 import '../../UI/currency_image.dart';
+import '../../UI/navigation_button.dart';
 import './spinning_boi.dart';
 
 import '../../utils/currencyData.dart';
@@ -87,6 +88,7 @@ class _HomeState extends State<HomePage> {
             _buildCurrencyList(context)
           ],
         ),
+        floatingActionButton: NavButton(),
       );
     }
 
