@@ -20,7 +20,7 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
       // TODO: implement initState
 
       _controller = AnimationController(
-        duration: const Duration(milliseconds: 1000), vsync: this
+        duration: const Duration(milliseconds: 700), vsync: this
       )..addListener(() {
             setState(() {});
       });
@@ -57,13 +57,26 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
       super.dispose();
     }
 
+  Widget settings() {
+    return Container(
+      child: FloatingActionButton(
+        heroTag: 'Settings',
+        backgroundColor: Colors.blue,
+        onPressed: null,
+        tooltip: 'Settings',
+        child: Icon(Icons.settings),
+      ),
+    );
+  }
+
   Widget news() {
     return Container(
       child: FloatingActionButton(
+        heroTag: 'News',
         backgroundColor: Colors.blue,
         onPressed: null,
-        tooltip: 'Add',
-        child: Icon(Icons.new_releases),
+        tooltip: 'News',
+        child: Icon(Icons.chrome_reader_mode),
       ),
     );
   }
@@ -71,6 +84,7 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
   Widget mainToggle() {
     return Container(
       child: FloatingActionButton(
+        heroTag: 'MainToggle',
         backgroundColor: Colors.blue,
         onPressed: animate,
         child: AnimatedIcon(
@@ -93,7 +107,7 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
               _translate.value * 2.0,
               0.0,
             ),
-            child: news(),
+            child: settings(),
           ),
           Transform(
             transform: Matrix4.translationValues(

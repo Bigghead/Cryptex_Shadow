@@ -9,7 +9,7 @@ import '../../UI/gradient_nav.dart';
 import '../../UI/gradient_body.dart';
 import '../../UI/currency_card.dart';
 import '../../UI/currency_image.dart';
-import '../../UI/info_text.dart';
+import '../../UI/navigation_button.dart';
 
 class CurrencyInfo extends StatefulWidget {
 
@@ -98,6 +98,7 @@ class _CurrencyInfoState extends State<CurrencyInfo> {
             ],
           ),
         ),
+        floatingActionButton: NavButton(),
       );
     }
 }
