@@ -10,7 +10,7 @@ class NavButton extends StatefulWidget {
 
 class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
 
-  bool isOpened;
+  bool isOpened = false;
   Animation<double> _animation;
   AnimationController _controller;
 
@@ -41,7 +41,10 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
       return FloatingActionButton(
         backgroundColor: Colors.blue,
         onPressed: animate,
-        child: Icon(Icons.add),
+        child: AnimatedIcon(
+          icon: AnimatedIcons.menu_close,
+          progress: _animation
+        ),
       );
     }
 }
