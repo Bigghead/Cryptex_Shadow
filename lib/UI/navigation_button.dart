@@ -74,7 +74,9 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
       child: FloatingActionButton(
         heroTag: 'News',
         backgroundColor: Colors.blue,
-        onPressed: null,
+        onPressed: () {
+          Navigator.pushNamed(context, '/news')
+        },
         tooltip: 'News',
         child: Icon(Icons.chrome_reader_mode),
       ),

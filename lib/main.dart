@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import './pages/Home_Page/homepage.dart';
-import './pages/Currency_Info/currency_info.dart';
+import './pages/News/newspage.dart';
 
 void main() {
   debugPaintSizeEnabled = true;
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       // home: HomePage(),
       routes: {
-        '/': ( BuildContext context ) => HomePage(),
+        '/'    : ( BuildContext context ) => HomePage(),
+        '/news': ( BuildContext context ) => NewsPage(),
       },
     );
   }
