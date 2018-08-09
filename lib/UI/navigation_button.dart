@@ -60,11 +60,11 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
   Widget settings() {
     return Container(
       child: FloatingActionButton(
-        heroTag: 'Settings',
+        heroTag: 'Home',
         backgroundColor: Colors.blue,
-        onPressed: null,
-        tooltip: 'Settings',
-        child: Icon(Icons.settings),
+        onPressed: () { Navigator.pushNamed(context, '/'); },
+        tooltip: 'Home',
+        child: Icon(Icons.home),
       ),
     );
   }
@@ -74,9 +74,7 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
       child: FloatingActionButton(
         heroTag: 'News',
         backgroundColor: Colors.blue,
-        onPressed: () {
-          Navigator.pushNamed(context, '/news')
-        },
+        onPressed: () { Navigator.pushNamed(context, '/news'); },
         tooltip: 'News',
         child: Icon(Icons.chrome_reader_mode),
       ),
