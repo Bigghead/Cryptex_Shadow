@@ -4,9 +4,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import './news_card.dart';
 import '../../UI/gradient_nav.dart';
 import '../../UI/gradient_body.dart';
 import '../../UI/navigation_button.dart';
+import '../Home_Page/spinning_boi.dart';
+
+import '../../utils/newsData.dart';
 
 class NewsPage extends StatefulWidget {
   @override
@@ -18,11 +22,13 @@ class NewsPage extends StatefulWidget {
 
 class _NewsPageState extends State<NewsPage>{
 
-  List<dynamic> newsResults;
+  List<dynamic> _newsResults = [];
 
   @override
   initState(){
-    _fetchNews();
+    // _fetchNews();
+    var newsData = NewsData();
+    this._newsResults = newsData.news;
     super.initState();
   }
 
@@ -30,7 +36,9 @@ class _NewsPageState extends State<NewsPage>{
   Future<Null> _fetchNews() async {
     http.Response response = await http.get('https://min-api.cryptocompare.com/data/news/?categories=all');
     List<dynamic> data = await json.decode(response.body);
-    print(data);
+    setState(() {
+          _newsResults = data;
+        });
   }
 
 
@@ -42,7 +50,9 @@ class _NewsPageState extends State<NewsPage>{
           children: <Widget>[
             GradientNav(),
             GradientBody(
-              child: Center(child: Text('meep'),),
+              child: _newsResults.length == 0 
+                ? Center(child: SpinningBoi(width: 160.0, height: 100.0,))
+                : NewsCard(_newsResults[0])
             )
           ],
         ),
