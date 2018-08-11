@@ -14,7 +14,27 @@ class NewsCard extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-             Text('${_news['published_on'].toString()}')
+             Text('${_news['published_on'].toString()}'),
+             Row(
+               children: <Widget>[
+                 Flexible(
+                   child: Column(
+                    children: <Widget>[
+                      Text(_news['title']),
+                      Text(_news['body'], overflow: TextOverflow.ellipsis, maxLines: 5,)
+                    ],
+                  ),
+                 ),
+                 Flexible(
+                   child: Center(
+                     child: Padding(
+                       padding: EdgeInsets.all(40.0),
+                       child: Image(image: NetworkImage(_news['imageurl'])),
+                     ),
+                   ),
+                 )
+               ],
+             )
            ]
           ),
         ),
