@@ -52,7 +52,12 @@ class _NewsPageState extends State<NewsPage>{
             GradientBody(
               child: _newsResults.length == 0 
                 ? Center(child: SpinningBoi(width: 160.0, height: 100.0,))
-                : NewsCard(_newsResults[0])
+                : ListView.builder(
+                  itemCount: _newsResults.length,
+                  itemBuilder: ( BuildContext context, int index ) {
+                    return NewsCard(_newsResults[index]);
+                  },
+                )
             )
           ],
         ),
