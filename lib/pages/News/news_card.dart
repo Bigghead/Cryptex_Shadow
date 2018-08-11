@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class NewsCard extends StatelessWidget {
 
   final Map _news;
 
   NewsCard(this._news);
+
+  void _parseDate( int date ) {
+    return timeago.format(DateTime.fromMillisecondsSinceEpoch(date * 1000));
+  }
 
   @override
     Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class NewsCard extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           child: Column(
             children: <Widget>[
-             Text('${_news['published_on'].toString()}'),
+             Text('${_parseDate(_news['published_on'])}'),
              Row(
                children: <Widget>[
                  Flexible(
