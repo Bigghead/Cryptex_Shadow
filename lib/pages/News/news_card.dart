@@ -65,7 +65,7 @@ class NewsCard extends StatelessWidget {
                         ),
                         SizedBox(height: 5.0),
                         Padding(
-                          padding: EdgeInsets.only(left: 10.0),
+                          padding: EdgeInsets.only(left: 10.0, bottom: 5.0),
                           child: Text(_news['body'], overflow: TextOverflow.ellipsis, maxLines: 7,),
                         )
                       ],
