@@ -10,7 +10,7 @@ import '../../UI/gradient_body.dart';
 import '../../UI/navigation_button.dart';
 import '../Home_Page/spinning_boi.dart';
 
-import '../../utils/newsData.dart';
+// import '../../utils/newsData.dart';
 
 class NewsPage extends StatefulWidget {
   @override
@@ -26,9 +26,9 @@ class _NewsPageState extends State<NewsPage>{
 
   @override
   initState(){
-    // _fetchNews();
-    var newsData = NewsData();
-    this._newsResults = newsData.news;
+    _fetchNews();
+    // var newsData = NewsData();
+    // this._newsResults = newsData.news;
     super.initState();
   }
 
@@ -46,20 +46,23 @@ class _NewsPageState extends State<NewsPage>{
     Widget build(BuildContext context) {
       // TODO: implement build
       return Scaffold(
-        body: Column(
-          children: <Widget>[
-            GradientNav(),
-            GradientBody(
-              child: _newsResults.length == 0 
-                ? Center(child: SpinningBoi(width: 160.0, height: 100.0,))
-                : ListView.builder(
-                  itemCount: _newsResults.length,
-                  itemBuilder: ( BuildContext context, int index ) {
-                    return NewsCard(_newsResults[index]);
-                  },
-                )
-            )
-          ],
+        body: RefreshIndicator(
+          onRefresh: _fetchNews,
+          child: Column(
+            children: <Widget>[
+              GradientNav(title: 'News',),
+              GradientBody(
+                child: _newsResults.length == 0 
+                  ? Center(child: SpinningBoi(width: 160.0, height: 100.0,))
+                  : ListView.builder(
+                    itemCount: _newsResults.length,
+                    itemBuilder: ( BuildContext context, int index ) {
+                      return NewsCard(_newsResults[index]);
+                    },
+                  )
+              )
+            ],
+          ),
         ),
         floatingActionButton: NavButton(),
       );

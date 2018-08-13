@@ -17,7 +17,7 @@ class GradientNav extends StatelessWidget {
         .top;
 
     return Container(
-      padding: EdgeInsets.only(top: statusbarHeight),
+      padding: EdgeInsets.only(top: statusbarHeight + 5.0),
       height: statusbarHeight + barHeight,
       child: Center(
         child: InfoText(title: title, fontSize:40.0, fontWeight: FontWeight.bold, ),
