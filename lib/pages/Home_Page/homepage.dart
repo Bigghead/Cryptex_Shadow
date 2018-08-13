@@ -12,7 +12,7 @@ import '../../UI/currency_image.dart';
 import '../../UI/navigation_button.dart';
 import './spinning_boi.dart';
 
-import '../../utils/currencyData.dart';
+// import '../../utils/currencyData.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -31,9 +31,9 @@ class _HomeState extends State<HomePage> {
     @override
     void initState() {
       super.initState();
-      // _fetchData();
-      var currencyData = CurrencyData();
-      _currencies = currencyData.currencies;
+      _fetchData();
+      // var currencyData = CurrencyData();
+      // _currencies = currencyData.currencies;
     }
 
 
@@ -43,7 +43,6 @@ class _HomeState extends State<HomePage> {
     final List<dynamic> coinData = await json.decode(response.body);
     // print(coinData);
     setState( () => _currencies = coinData );
-    print(_currencies);
   }
 
 

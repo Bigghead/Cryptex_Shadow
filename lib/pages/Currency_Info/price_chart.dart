@@ -16,8 +16,14 @@ class PriceChart extends StatelessWidget {
         margin: EdgeInsets.only(top: 25.0),
         child: Column(
           children: <Widget>[
-            InfoText(title:dataLength.toUpperCase()),
-            SizedBox(height: 15.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.show_chart, color: Colors.white,),
+                InfoText(title:dataLength.toUpperCase())
+              ],
+            ),
+            SizedBox(height: 20.0,),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 25.0),
               child: FadeInImage(
