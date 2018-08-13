@@ -87,9 +87,9 @@ class _CurrencyInfoState extends State<CurrencyInfo> {
                         ) ),
                         SizedBox(height: 20.0,),
                         Converter(_currency),
-                        PriceChart(dataLength: '24h'),
-                        PriceChart(dataLength: '7d'),
-                        PriceChart(dataLength: '30d')
+                        PriceChart(symbol: _currency['symbol'], dataLength: '24h'),
+                        PriceChart(symbol: _currency['symbol'], dataLength: '7d'),
+                        PriceChart(symbol: _currency['symbol'], dataLength: '30d')
                         
                       ],
                     ),

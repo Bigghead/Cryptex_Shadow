@@ -23,7 +23,21 @@ class NewsCard extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           child: Column(
             children: <Widget>[
-             Text('${_parseDate(_news['published_on'])}'),
+             Container(
+               margin: EdgeInsets.symmetric(vertical: 10.0),
+               child:  Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('${_parseDate(_news['published_on'])} from'),
+                  SizedBox(width: 5.0),
+                  Text('${_news['source']}', style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'FiraCode'
+                  ),)
+                ],
+              ),
+             ), 
              Row(
                children: <Widget>[
                  Flexible(
@@ -32,7 +46,9 @@ class NewsCard extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
-                        child: Text(_news['title']),
+                        child: Text(_news['title'], style: TextStyle(
+                          fontWeight: FontWeight.bold
+                        ),),
                       ),
                       SizedBox(height: 5.0),
                       Padding(
