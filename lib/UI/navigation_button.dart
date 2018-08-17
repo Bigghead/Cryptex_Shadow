@@ -57,7 +57,7 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
       super.dispose();
     }
 
-  Widget settings() {
+  Widget home() {
     return Container(
       child: FloatingActionButton(
         heroTag: 'Home',
@@ -116,18 +116,10 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
           Transform(
             transform: Matrix4.translationValues(
               0.0,
-              _translate.value * 3.0,
-              0.0,
-            ),
-            child: settings(),
-          ),
-          Transform(
-            transform: Matrix4.translationValues(
-              0.0,
               _translate.value * 2.0,
               0.0,
             ),
-            child: news(),
+            child: home(),
           ),
           Transform(
             transform: Matrix4.translationValues(
@@ -135,8 +127,16 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
               _translate.value,
               0.0,
             ),
-            child: portfolio(),
+            child: news(),
           ),
+          // Transform(
+          //   transform: Matrix4.translationValues(
+          //     0.0,
+          //     _translate.value,
+          //     0.0,
+          //   ),
+          //   child: portfolio(),
+          // ),
           mainToggle()
         ],
       );
