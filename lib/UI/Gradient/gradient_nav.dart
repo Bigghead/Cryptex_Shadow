@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './info_text.dart';
+import '../info_text.dart';
 
 
 class GradientNav extends StatelessWidget {

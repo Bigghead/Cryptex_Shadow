@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../UI/gradient_container.dart';
+import './gradient_container.dart';
 
 
 class GradientBody extends StatelessWidget {

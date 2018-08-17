@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../UI/price_change_text.dart';
+import '../price_change_text.dart';
 
 class CurrencyCard extends StatelessWidget {
 

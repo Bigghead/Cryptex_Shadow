@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import './news_card.dart';
-import '../../UI/gradient_nav.dart';
-import '../../UI/gradient_body.dart';
+import '../../UI/Gradient/gradient_nav.dart';
+import '../../UI/Gradient/gradient_body.dart';
 import '../../UI/navigation_button.dart';
 import '../Home_Page/spinning_boi.dart';
 

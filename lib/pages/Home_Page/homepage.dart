@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 import '../Currency_Info/currency_info.dart';
-import '../../UI/gradient_nav.dart';
-import '../../UI/gradient_body.dart';
-import '../../UI/currency_card.dart';
-import '../../UI/currency_image.dart';
+import '../../UI/Gradient/gradient_nav.dart';
+import '../../UI/Gradient/gradient_body.dart';
+import '../../UI/Currency/currency_card.dart';
+import '../../UI/Currency/currency_image.dart';
 import '../../UI/navigation_button.dart';
 import './spinning_boi.dart';
 

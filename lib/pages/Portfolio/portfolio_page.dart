@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../UI/gradient_container.dart';
+import '../../UI/Gradient/gradient_container.dart';
 
 class PortfolioPage extends StatelessWidget {
 
