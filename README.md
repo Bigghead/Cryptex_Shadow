@@ -1,8 +1,8 @@
-# cryptex_shadow
+<h1 align="center">CryptoShadow</h1>
 
-A new Flutter project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+<div align="center">
+  <img src="Screenshots/Screen1.png" height="500"/>
+  <img src="Screenshots/Screen2.png" height="500"/>
+  <img src="Screenshots/Screen3.png" height="500"/>
+  
+</div>
