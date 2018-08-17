@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import './pages/Home_Page/homepage.dart';
 import './pages/News/newspage.dart';
+import './pages/Portfolio/portfolio_page.dart';
 
 void main() {
   debugPaintSizeEnabled = true;
@@ -21,8 +22,9 @@ class MyApp extends StatelessWidget {
       ),
       // home: HomePage(),
       routes: {
-        '/'    : ( BuildContext context ) => HomePage(),
-        '/news': ( BuildContext context ) => NewsPage(),
+        '/'         : ( BuildContext context ) => HomePage(),
+        '/news'     : ( BuildContext context ) => NewsPage(),
+        '/portfolio': ( BuildContext context ) => PortfolioPage(),
       },
     );
   }

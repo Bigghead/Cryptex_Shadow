@@ -81,6 +81,18 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
     );
   }
 
+    Widget portfolio() {
+    return Container(
+      child: FloatingActionButton(
+        heroTag: 'Portfolio',
+        backgroundColor: Colors.blue,
+        onPressed: () { Navigator.pushNamed(context, '/portfolio'); },
+        tooltip: 'Portfolio',
+        child: Icon(Icons.pie_chart_outlined),
+      ),
+    );
+  }
+
   Widget mainToggle() {
     return Container(
       child: FloatingActionButton(
@@ -104,7 +116,7 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
           Transform(
             transform: Matrix4.translationValues(
               0.0,
-              _translate.value * 2.0,
+              _translate.value * 3.0,
               0.0,
             ),
             child: settings(),
@@ -112,10 +124,18 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
           Transform(
             transform: Matrix4.translationValues(
               0.0,
-              _translate.value,
+              _translate.value * 2.0,
               0.0,
             ),
             child: news(),
+          ),
+          Transform(
+            transform: Matrix4.translationValues(
+              0.0,
+              _translate.value,
+              0.0,
+            ),
+            child: portfolio(),
           ),
           mainToggle()
         ],
